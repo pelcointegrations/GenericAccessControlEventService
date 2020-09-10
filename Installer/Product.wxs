@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?define ProductID = "*"?>
+<?define PackageID = "*"?>
+<?define ProductUpgradeCode = "50392705-463D-440F-810F-C86EAB19BB2E"?>
+<?define ProductIcon = "$(var.SolutionDir)Installer\Resources\VideoXpert_Ops.ico"?>
+<?define WixUIDialogBmp = "$(var.SolutionDir)Installer\Resources\vx-installer-intro-bg.jpg"?>
+<?define WixUIBannerBmp = "$(var.SolutionDir)Installer\Resources\vx-installer-interior-banner-bg.jpg"?>
+<?define Version = "3.10.0.0"?>
+<?define App = "$(var.GenericAccessControlEventService.TargetDir)"?>
+<?define AdminApp = "$(var.VX_ACS_Administration.TargetDir)"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="$(var.ProductID)" UpgradeCode="$(var.ProductUpgradeCode)" Name="GenericAccessControlEventService" Version="$(var.Version)" Manufacturer="Generic" Language="1033">
+    <Package Id="$(var.PackageID)" Keywords="Installer,MSI" Manufacturer="Generic" InstallerVersion="200" Compressed="yes" Comments="$(var.Version)"/>
+
+    <Property Id="ARPPRODUCTICON" Value="ProductIcon"/>
+    <Property Id="ARPHELPLINK" Value="http://www.pelco.com"/>
+    <Property Id="ARPURLINFOABOUT" Value="http://www.pelco.com"/>
+    <Property Id="ARPNOMODIFY" Value="1"/>
+    <Property Id="MSIUSEREALADMINDETECTION" Value="1" />
+
+    <Icon Id="ProductIcon" SourceFile="$(var.ProductIcon)"/>
+    <WixVariable Id="WixUIDialogBmp" Value="$(var.WixUIDialogBmp)" />
+    <WixVariable Id="WixUIBannerBmp" Value="$(var.WixUIBannerBmp)" />
+
+    <UI Id="Mondo">
+      <UIRef Id="WixUI_Mondo" />
+      <UIRef Id="WixUI_ErrorProgressText" />
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Order="3">1</Publish>
+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="3">1</Publish>
+    </UI>
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Feature Id="ProductFeature" Title="GenericAccessControlEventService" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+      <ComponentRef Id="ApplicationShortcut" />
+    </Feature>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="ProgramFilesParentFolder" Name="Pelco">
+          <Directory Id="INSTALLFOLDER" Name="GenericAccessControlEventService">
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsParentFolder" Name="Pelco">
+          <Directory Id="ApplicationProgramsFolder" Name="Pelco ACS Administation Tool"/>
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+      <Component Id="ProductComponent" Guid="46884D56-ADA2-49E6-A68E-5EE03865E032">
+        <File Id="VX_ACS_Administration.exe" Source="$(var.AdminApp)/VX_ACS_Administration.exe" />
+        <File Id="VxEventServer.dll" Source="$(var.App)/VxEventServer.dll"/>
+        <File Id="VxEventServer.dll.config" Source="$(var.App)/VxEventServer.dll.config" />
+        <File Id="VxSdk.NET.dll" Source="$(var.App)/VxSdk.NET.dll" />
+        <File Id="VxSdk.dll" Source="$(var.App)/VxSdk.dll" />
+        <File Id="XMLUtilities.dll" Source="$(var.App)/XMLUtilities.dll" />
+        <File Id="AccessControlIPC.dll" Source="$(var.App)/AccessControlIPC.dll"/>
+        <File Id="Newtonsoft.Json.dll" Source="$(var.App)/Newtonsoft.Json.dll" />
+        <File Id="BouncyCastle.Crypto.dll" Source="$(var.App)/BouncyCastle.Crypto.dll" />
+        
+        <File Id="GenericAccessControlEventService.exe"
+                Name="GenericAccessControlEventService.exe"
+                Source="$(var.App)/GenericAccessControlEventService.exe"
+                Vital="yes"
+                KeyPath="yes"
+                DiskId="1" />
+        <File Id="GenericAccessControlEventService.exe.config"
+                Name="GenericAccessControlEventService.exe.config"
+                Source="$(var.App)/GenericAccessControlEventService.exe.config"
+                Vital="yes"
+                KeyPath="no"
+                DiskId="1" />
+
+        <ServiceInstall Id="ServiceInstaller"
+                          Type="ownProcess"
+                          Vital="yes"
+                          Name="GenericAccessControlEventService"
+                          DisplayName="Generic AccessControl Vx Event Service"
+                          Description="Generic Access Control Vx Event Service"
+                          Start="demand"
+                          Account="LocalSystem"
+                          ErrorControl="ignore"
+                          Interactive="no">
+        </ServiceInstall>
+
+        <!-- removed for testing Start="install" -->
+        <ServiceControl Id="StartService"
+                          Stop="both"
+                          Remove="uninstall"
+                          Name="GenericAccessControlEventService"
+                          Wait="yes" />
+
+        <ServiceConfig DelayedAutoStart="no"
+                       ServiceName="GenericAccessControlEventService"
+                       OnInstall="yes"
+                       OnReinstall="yes" />
+
+        <util:ServiceConfig xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+                          FirstFailureActionType="restart"
+                          SecondFailureActionType="restart"
+                          ThirdFailureActionType ="none"
+                          RestartServiceDelayInSeconds ="60"
+                          ResetPeriodInDays="1"
+                          ServiceName="GenericAccessControlEventService" />
+      </Component>
+    </ComponentGroup>
+
+    <ComponentGroup Id="ProductComponentShortcut" Directory="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="7AC02AC0-B74B-4E30-92E8-276B4FF6F209">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+            Name="Generic ACS VideoXpert Event Service Administration Tool"
+            Description="Administration Tool for Generic AccessControl Vx Event Service"
+            Target="[#VX_ACS_Administration.exe]"
+            WorkingDirectory="INSTALLFOLDER"/>
+        <RemoveFolder Id="RemoveApplicationProgramsFolder" Directory="ApplicationProgramsFolder" On="uninstall"/>
+        <RemoveFolder Id="RemoveApplicationProgramsParentFolder" Directory="ApplicationProgramsParentFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\Pelco\VX_ACS_Administration" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

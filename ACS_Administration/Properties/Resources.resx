@@ -1,0 +1,647 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AreYouSure" xml:space="preserve">
+    <value> If you close Administrator without saving, your changes will be lost.  Are you sure you want to close?</value>
+    <comment>When the user attempts to exit admin without saving</comment>
+  </data>
+  <data name="CameraDoorExists" xml:space="preserve">
+    <value>Camera/Door relationship already exists.  A new entry will not be added.</value>
+  </data>
+  <data name="CameraUUIDNotFound" xml:space="preserve">
+    <value>Selected Camera is not associated with a door</value>
+  </data>
+  <data name="CannotConnectToContinuumDB" xml:space="preserve">
+    <value>Cannot connect to Continuum Database!</value>
+  </data>
+  <data name="CannotConnectToVx" xml:space="preserve">
+    <value>Cannot Connect to VideoXpert!</value>
+  </data>
+  <data name="CannotCreateDatabaseTable" xml:space="preserve">
+    <value>Unable to create database table '3PIVX_PlugInDefaultDoor'.</value>
+  </data>
+  <data name="ConfirmCancel" xml:space="preserve">
+    <value>Are you sure you want to cancel this instance?</value>
+  </data>
+  <data name="ConnectToContinuumDB" xml:space="preserve">
+    <value>Successful Connect to Continuum Database!</value>
+  </data>
+  <data name="ConnectVxSuccess" xml:space="preserve">
+    <value>Successful Connection to VideoXpert.</value>
+  </data>
+  <data name="ConnectVxSuccessSwitch" xml:space="preserve">
+    <value>Successful Connection to VideoXpert.  Switching may remove all configured Camera/Door Associations.  Do you wish to switch to this VideoXpert system?</value>
+  </data>
+  <data name="ContactAdministrator" xml:space="preserve">
+    <value>An application error occured. Please contact the administrator with the following information:\n\n</value>
+  </data>
+  <data name="Continuum" xml:space="preserve">
+    <value>Andover Continuum - Pelco VX Plug-In Admin</value>
+  </data>
+  <data name="ContinuumRegistryNotFound" xml:space="preserve">
+    <value>Continuum is not installed on this workstation. Please use Admin to enter Continuum Database Settings manually.</value>
+  </data>
+  <data name="ContinuumSettingsNotFound" xml:space="preserve">
+    <value>"ContinuumSettings.txt" not found</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DoorCamerasMapNotFound" xml:space="preserve">
+    <value>"DoorCamerasMap.txt" not found</value>
+  </data>
+  <data name="EventListPixels" xml:space="preserve">
+    <value>Minimum Size to Show Event List</value>
+  </data>
+  <data name="FatalNonUIError" xml:space="preserve">
+    <value>Fatal Non-UI Error: Could not write the error to the event log. Reason: </value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Green_Dot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Green Dot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InvalidBlankData" xml:space="preserve">
+    <value>The input data cannot be blank.</value>
+  </data>
+  <data name="InvalidData" xml:space="preserve">
+    <value>The input data is invalid.</value>
+  </data>
+  <data name="LicenseVerificationFailed" xml:space="preserve">
+    <value>License verification failed. Please check license and restart application.</value>
+  </data>
+  <data name="MaxSize" xml:space="preserve">
+    <value>Maximum Size</value>
+  </data>
+  <data name="MinSize" xml:space="preserve">
+    <value>Minimum Size</value>
+  </data>
+  <data name="PlugInAdmin" xml:space="preserve">
+    <value>Continuum PlugIn Administration</value>
+  </data>
+  <data name="Ratio" xml:space="preserve">
+    <value>Ratio</value>
+  </data>
+  <data name="Red_Dot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\Red Dot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SettingsHaveBeenSaved" xml:space="preserve">
+    <value>Settings have been saved!</value>
+  </data>
+  <data name="SettingsNotSaved" xml:space="preserve">
+    <value>Settings NOT saved!  Please fix errors!</value>
+  </data>
+  <data name="SizeRange" xml:space="preserve">
+    <value>The "{0}" should be between {1} and {2}.</value>
+  </data>
+  <data name="ThirdPISql" xml:space="preserve">
+    <value>/****** Object:  Table [dbo].[3PIVX_PlugInDefaultDoor]    Script Date: 12/03/2015 13:53:22 ******/
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_PlugInDefaultDoor]') AND type in (N'U'))
+BEGIN
+
+CREATE TABLE [dbo].[3PIVX_PlugInDefaultDoor](
+	[ObjectId] [int] IDENTITY(1,1) NOT NULL,
+	[CameraGuid] [nvarchar](50) NULL,
+	[DoorIdHi] [int] NULL,
+	[DoorIdLo] [int] NULL
+) ON [PRIMARY]
+
+END
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_PlugInDefaultDoor]') AND name = N'IDX_Object')
+CREATE NONCLUSTERED INDEX [IDX_Object] ON [dbo].[3PIVX_PlugInDefaultDoor] 
+(
+	[ObjectId] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_PlugInDefaultDoor]') AND name = N'IX_DoorIdHiLo')
+CREATE NONCLUSTERED INDEX [IX_DoorIdHiLo] ON [dbo].[3PIVX_PlugInDefaultDoor] 
+(
+	[DoorIdHi] ASC,
+	[DoorIdLo] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_PlugInDefaultDoor]') AND name = N'IX_CameraGuid')
+CREATE NONCLUSTERED INDEX [IX_CameraGuid] ON [dbo].[3PIVX_PlugInDefaultDoor] 
+(
+	[CameraGuid] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+
+
+/****** Object:  Table [dbo].[3PIVX_PlugInDoorXRef]    Script Date: 12/03/2015 13:53:40 ******/
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_PlugInDoorXRef]') AND type in (N'U'))
+BEGIN
+
+CREATE TABLE [dbo].[3PIVX_PlugInDoorXRef](
+	[DoorName] [nvarchar](max) NULL,
+	[DoorIdHi] [int] NULL,
+	[DoorIdLo] [int] NULL,
+	[CameraName] [nvarchar](max) NULL,
+	[CameraGuid] [nvarchar](50) NULL
+) ON [PRIMARY]
+END
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_PlugInDoorXRef]') AND name = N'IX_CameraGuid')
+CREATE NONCLUSTERED INDEX [IX_CameraGuid] ON [dbo].[3PIVX_PlugInDoorXRef] 
+(
+	[CameraGuid] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_PlugInDoorXRef]') AND name = N'IX_DoorIdHiLo')
+CREATE NONCLUSTERED INDEX [IX_DoorIdHiLo] ON [dbo].[3PIVX_PlugInDoorXRef] 
+(
+	[DoorIdHi] ASC,
+	[DoorIdLo] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]</value>
+  </data>
+  <data name="ThirdPISqlCreateTables" xml:space="preserve">
+    <value>SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_Config]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[3PIVX_Config](
+	[A] [varchar](255) NULL,
+	[B] [varchar](255) NULL
+) ON [PRIMARY]
+END
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_Camera]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[3PIVX_Camera](
+	[3PIVX_Name] [varchar](80) NOT NULL,
+	[ServerName] [varchar](255) NOT NULL,
+	[ServerID] [int] NOT NULL,
+	[CameraName] [varchar](80) NULL,
+	[CameraID] [int] NULL,
+	[CameraGuid] [varchar](40) NULL,
+	[PTZ] [int] NULL,
+	[Other1] [varchar](40) NULL,
+	[Other2] [varchar](40) NULL,
+	[Other3] [varchar](40) NULL,
+	[VidLossEnable] [bit] NULL,
+	[VidLossObjIdHi] [int] NULL,
+	[VidLossObjIdLo] [int] NULL,
+	[VidLossPointName] [varchar](255) NULL,
+	[VidLossPointPath] [varchar](255) NULL,
+	[VidLossSchedEnable] [bit] NULL,
+	[VidLossSchedObjIdHi] [int] NULL,
+	[VidLossSchedObjIdLo] [int] NULL,
+	[VidLossSchedPointName] [varchar](255) NULL,
+	[VidLossSchedPointPath] [varchar](255) NULL,
+	[ContrLossEnable] [bit] NULL,
+	[ContrLossObjIdHi] [int] NULL,
+	[ContrLossObjIdLo] [int] NULL,
+	[ContrLossPointName] [varchar](255) NULL,
+	[ContrLossPointPath] [varchar](255) NULL,
+	[ContrLossSchedEnable] [bit] NULL,
+	[ContrLossSchedObjIdHi] [int] NULL,
+	[ContrLossSchedObjIdLo] [int] NULL,
+	[ContrLossSchedPointName] [varchar](255) NULL,
+	[ContrLossSchedPointPath] [varchar](255) NULL,
+	[MotionEnable] [bit] NULL,
+	[MotionObjIdHi] [int] NULL,
+	[MotionObjIdLo] [int] NULL,
+	[MotionPointName] [varchar](255) NULL,
+	[MotionPointPath] [varchar](255) NULL,
+	[MotionSchedEnable] [bit] NULL,
+	[MotionSchedObjIdHi] [int] NULL,
+	[MotionSchedObjIdLo] [int] NULL,
+	[MotionSchedPointName] [varchar](255) NULL,
+	[MotionSchedPointPath] [varchar](255) NULL,
+	[MotionRTNSecs] [int] NULL,
+	[Analy1Name] [varchar](40) NULL,
+	[Analy1Enable] [bit] NULL,
+	[Analy1ObjIdHi] [int] NULL,
+	[Analy1ObjIdLo] [int] NULL,
+	[Analy1PointName] [varchar](255) NULL,
+	[Analy1PointPath] [varchar](255) NULL,
+	[Analy1SchedEnable] [bit] NULL,
+	[Analy1SchedObjIdHi] [int] NULL,
+	[Analy1SchedObjIdLo] [int] NULL,
+	[Analy1SchedPointName] [varchar](255) NULL,
+	[Analy1SchedPointPath] [varchar](255) NULL,
+	[Analy1RTNSecs] [int] NULL,
+	[Analy2Name] [varchar](40) NULL,
+	[Analy2Enable] [bit] NULL,
+	[Analy2ObjIdHi] [int] NULL,
+	[Analy2ObjIdLo] [int] NULL,
+	[Analy2PointName] [varchar](255) NULL,
+	[Analy2PointPath] [varchar](255) NULL,
+	[Analy2SchedEnable] [bit] NULL,
+	[Analy2SchedObjIdHi] [int] NULL,
+	[Analy2SchedObjIdLo] [int] NULL,
+	[Analy2SchedPointName] [varchar](255) NULL,
+	[Analy2SchedPointPath] [varchar](255) NULL,
+	[Analy2RTNSecs] [int] NULL,
+	[Analy3Name] [varchar](40) NULL,
+	[Analy3Enable] [bit] NULL,
+	[Analy3ObjIdHi] [int] NULL,
+	[Analy3ObjIdLo] [int] NULL,
+	[Analy3PointName] [varchar](255) NULL,
+	[Analy3PointPath] [varchar](255) NULL,
+	[Analy3SchedEnable] [bit] NULL,
+	[Analy3SchedObjIdHi] [int] NULL,
+	[Analy3SchedObjIdLo] [int] NULL,
+	[Analy3SchedPointName] [varchar](255) NULL,
+	[Analy3SchedPointPath] [varchar](255) NULL,
+	[Analy3RTNSecs] [int] NULL,
+
+	[Analy4Name] [varchar](40) NULL,
+	[Analy4Enable] [bit] NULL,
+	[Analy4ObjIdHi] [int] NULL,
+	[Analy4ObjIdLo] [int] NULL,
+	[Analy4PointName] [varchar](255) NULL,
+	[Analy4PointPath] [varchar](255) NULL,
+	[Analy4SchedEnable] [bit] NULL,
+	[Analy4SchedObjIdHi] [int] NULL,
+	[Analy4SchedObjIdLo] [int] NULL,
+	[Analy4SchedPointName] [varchar](255) NULL,
+	[Analy4SchedPointPath] [varchar](255) NULL,
+	[Analy4RTNSecs] [int] NULL,
+
+	[Analy5Name] [varchar](40) NULL,
+	[Analy5Enable] [bit] NULL,
+	[Analy5ObjIdHi] [int] NULL,
+	[Analy5ObjIdLo] [int] NULL,
+	[Analy5PointName] [varchar](255) NULL,
+	[Analy5PointPath] [varchar](255) NULL,
+	[Analy5SchedEnable] [bit] NULL,
+	[Analy5SchedObjIdHi] [int] NULL,
+	[Analy5SchedObjIdLo] [int] NULL,
+	[Analy5SchedPointName] [varchar](255) NULL,
+	[Analy5SchedPointPath] [varchar](255) NULL,
+	[Analy5RTNSecs] [int] NULL,
+
+	[Analy6Name] [varchar](40) NULL,
+	[Analy6Enable] [bit] NULL,
+	[Analy6ObjIdHi] [int] NULL,
+	[Analy6ObjIdLo] [int] NULL,
+	[Analy6PointName] [varchar](255) NULL,
+	[Analy6PointPath] [varchar](255) NULL,
+	[Analy6SchedEnable] [bit] NULL,
+	[Analy6SchedObjIdHi] [int] NULL,
+	[Analy6SchedObjIdLo] [int] NULL,
+	[Analy6SchedPointName] [varchar](255) NULL,
+	[Analy6SchedPointPath] [varchar](255) NULL,
+	[Analy6RTNSecs] [int] NULL,
+
+	[Analy7Name] [varchar](40) NULL,
+	[Analy7Enable] [bit] NULL,
+	[Analy7ObjIdHi] [int] NULL,
+	[Analy7ObjIdLo] [int] NULL,
+	[Analy7PointName] [varchar](255) NULL,
+	[Analy7PointPath] [varchar](255) NULL,
+	[Analy7SchedEnable] [bit] NULL,
+	[Analy7SchedObjIdHi] [int] NULL,
+	[Analy7SchedObjIdLo] [int] NULL,
+	[Analy7SchedPointName] [varchar](255) NULL,
+	[Analy7SchedPointPath] [varchar](255) NULL,
+	[Analy7RTNSecs] [int] NULL,
+
+	[Analy8Name] [varchar](40) NULL,
+	[Analy8Enable] [bit] NULL,
+	[Analy8ObjIdHi] [int] NULL,
+	[Analy8ObjIdLo] [int] NULL,
+	[Analy8PointName] [varchar](255) NULL,
+	[Analy8PointPath] [varchar](255) NULL,
+	[Analy8SchedEnable] [bit] NULL,
+	[Analy8SchedObjIdHi] [int] NULL,
+	[Analy8SchedObjIdLo] [int] NULL,
+	[Analy8SchedPointName] [varchar](255) NULL,
+	[Analy8SchedPointPath] [varchar](255) NULL,
+	[Analy8RTNSecs] [int] NULL
+) ON [PRIMARY]
+END
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_Camera]') AND name = N'IX_3PIVX_Name')
+CREATE NONCLUSTERED INDEX [IX_3PIVX_Name] ON [dbo].[3PIVX_Camera] 
+(
+	[3PIVX_Name] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_Camera]') AND name = N'IX_CameraID')
+CREATE NONCLUSTERED INDEX [IX_CameraID] ON [dbo].[3PIVX_Camera] 
+(
+	[CameraID] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_Camera]') AND name = N'IX_CameraName')
+CREATE NONCLUSTERED INDEX [IX_CameraName] ON [dbo].[3PIVX_Camera] 
+(
+	[CameraName] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_Camera]') AND name = N'IX_ServerID')
+CREATE NONCLUSTERED INDEX [IX_ServerID] ON [dbo].[3PIVX_Camera] 
+(
+	[ServerID] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_Camera]') AND name = N'IX_ServerName')
+CREATE NONCLUSTERED INDEX [IX_ServerName] ON [dbo].[3PIVX_Camera] 
+(
+	[ServerName] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS(SELECT * FROM sys.columns WHERE Name = N'CameraGuid' AND Object_ID = Object_ID(N'[dbo].[3PIVX_Camera]')) 
+BEGIN 
+	ALTER TABLE [dbo].[3PIVX_Camera] ADD [CameraGuid] VARCHAR(40) NULL 
+END
+
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_PointXRef]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[3PIVX_PointXRef](
+	[ObjectIDHi] [int] NOT NULL,
+	[ObjectIDLo] [int] NOT NULL,
+	[ObjectPointName] [varchar](255) NULL,
+	[ObjectPointPath] [varchar](255) NULL,
+	[ClassType] [int] NULL,
+	[ClassDescription] [varchar](20) NULL,
+	[3PIVX_Name] [varchar](80) NULL,
+	[ServerName] [varchar](80) NULL,
+	[ServerID] [int] NULL,
+	[CameraName] [varchar](80) NULL,
+	[CameraID] [int] NULL,
+	[CameraGuid] [varchar](40) NULL,
+	[PTZ] [int] NULL,
+	[Record] [bit] NULL,
+	[RecordChan] [int] NULL,
+	[LayoutNum] [int] NULL,
+	[LayoutPos] [int] NULL,
+	[LayoutLiveRec] [varchar](6) NULL,
+	[PreSecs] [int] NULL,
+	[RecordSecs] [int] NULL,
+	[PostSecs] [int] NULL,
+	[PECommand] [varchar](255) NULL
+) ON [PRIMARY]
+END
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_PointXRef]') AND name = N'IX_3PIVX_Name')
+CREATE NONCLUSTERED INDEX [IX_3PIVX_Name] ON [dbo].[3PIVX_PointXRef] 
+(
+	[3PIVX_Name] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_PointXRef]') AND name = N'IX_CameraID')
+CREATE NONCLUSTERED INDEX [IX_CameraID] ON [dbo].[3PIVX_PointXRef] 
+(
+	[CameraID] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_PointXRef]') AND name = N'IX_CameraName')
+CREATE NONCLUSTERED INDEX [IX_CameraName] ON [dbo].[3PIVX_PointXRef] 
+(
+	[CameraName] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_PointXRef]') AND name = N'IX_ObjectID')
+CREATE NONCLUSTERED INDEX [IX_ObjectID] ON [dbo].[3PIVX_PointXRef] 
+(
+	[ObjectIDHi] ASC,
+	[ObjectIDLo] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_PointXRef]') AND name = N'IX_ServerID')
+CREATE NONCLUSTERED INDEX [IX_ServerID] ON [dbo].[3PIVX_PointXRef] 
+(
+	[ServerID] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_PointXRef]') AND name = N'IX_ServerName')
+CREATE NONCLUSTERED INDEX [IX_ServerName] ON [dbo].[3PIVX_PointXRef] 
+(
+	[ServerName] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS(SELECT * FROM sys.columns WHERE Name = N'CameraGuid' AND Object_ID = Object_ID(N'[dbo].[3PIVX_PointXRef]')) 
+BEGIN 
+	ALTER TABLE [dbo].[3PIVX_PointXRef] ADD [CameraGuid] VARCHAR(40) NULL 
+END
+
+SET ANSI_NULLS ON
+SET QUOTED_IDENTIFIER ON
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_VideoServer]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[3PIVX_VideoServer](
+	[3PIVX_Name] [varchar](80) NOT NULL,
+	[ServerName] [varchar](255) NULL,
+	[ServerID] [int] identity(5000, 1) NOT NULL,
+	[Description] [varchar](255) NULL,
+	[ConnectString] [varchar](255) NULL,
+	[UserName] [varchar](40) NULL,
+	[Password] [varbinary](255) NULL,
+	[Other1] [varchar](255) NULL,
+	[Other2] [varchar](255) NULL,
+	[Other3] [varchar](255) NULL,
+	[ServerMonEnable] [bit] NULL,
+	[StatusAlm1Enable] [bit] NULL,
+	[StatusAlm1ObjIdHi] [int] NULL,
+	[StatusAlm1ObjIdLo] [int] NULL,
+	[StatusAlm1PointName] [varchar](255) NULL,
+	[StatusAlm1PointPath] [varchar](255) NULL,
+	[VidLossMonEnable] [bit] NULL,
+	[VidContrMonEnable] [bit] NULL,
+	[VidMotionMonEnable] [bit] NULL,
+	[VidAnaly1MonEnable] [bit] NULL,
+	[VidAnaly2MonEnable] [bit] NULL,
+	[VidAnaly3MonEnable] [bit] NULL,
+	[VidAnaly4MonEnable] [bit] NULL,
+	[VidAnaly5MonEnable] [bit] NULL,
+	[VidAnaly6MonEnable] [bit] NULL,
+	[VidAnaly7MonEnable] [bit] NULL,
+	[VidAnaly8MonEnable] [bit] NULL,
+	[PrimaryMonWSName] [varchar](255) NULL,
+	[PrimaryMonSecs] [int] NULL,
+	[PrimaryMonLastDT] [datetime] NULL,
+	[SecondMonWSName] [varchar](255) NULL,
+	[SecondMonSecs] [int] NULL,
+	[SecondMonLastDT] [datetime] NULL
+) ON [PRIMARY]
+END
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_VideoServer]') AND name = N'IX_3PIVX_Name')
+CREATE NONCLUSTERED INDEX [IX_3PIVX_Name] ON [dbo].[3PIVX_VideoServer] 
+(
+	[3PIVX_Name] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_VideoServer]') AND name = N'IX_ServerID')
+CREATE NONCLUSTERED INDEX [IX_ServerID] ON [dbo].[3PIVX_VideoServer] 
+(
+	[ServerID] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_VideoServer]') AND name = N'IX_ServerName')
+CREATE NONCLUSTERED INDEX [IX_ServerName] ON [dbo].[3PIVX_VideoServer] 
+(
+	[ServerName] ASC
+)WITH (PAD_INDEX  = OFF, IGNORE_DUP_KEY = OFF) ON [PRIMARY]
+
+
+/****** Object:  Table [dbo].[3PIVX_VideoAlarmConfiguration]    Script Date: 11/27/2010 11:30:18 ******/
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[3PIVX_VideoAlarmConfiguration]') AND type in (N'U'))
+DROP TABLE [dbo].[3PIVX_VideoAlarmConfiguration]
+
+/****** Object:  Table [dbo].[3PIVX_VideoAlarmConfiguration]    Script Date: 11/27/2010 11:30:19 ******/
+SET ANSI_NULLS ON
+
+SET QUOTED_IDENTIFIER ON
+
+SET ANSI_PADDING ON
+
+CREATE TABLE [dbo].[3PIVX_VideoAlarmConfiguration](
+	[ConfigType] [varchar](256) NOT NULL,
+	[ConfigString] [text] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ConfigType] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+SET ANSI_PADDING OFF
+</value>
+  </data>
+  <data name="Timestamp" xml:space="preserve">
+    <value>Timestamp</value>
+  </data>
+  <data name="TruncateDone" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="TruncateSkipped" xml:space="preserve">
+    <value>Skipped</value>
+  </data>
+  <data name="TruncatingLogFiles" xml:space="preserve">
+    <value>Truncating Log Files ...</value>
+  </data>
+  <data name="UnknownError" xml:space="preserve">
+    <value>Unknown error occured in the program. Application is exiting. \r\n</value>
+  </data>
+  <data name="VideoXPertServerChanged" xml:space="preserve">
+    <value>The VideoXPert Server has changed, do you wish to remove all Camera/Door associations and refresh the camera list?</value>
+  </data>
+</root>

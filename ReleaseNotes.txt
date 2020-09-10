@@ -1,5 +1,36 @@
-# GenericAccessControlEventService
-Generic Access Control Event Service
+----------------------------------------------------
+9/8/2020 Version 3.10.0.0
+
+	Updated to VxSdk.Net 3.0.33
+	
+	More commented in code.
+	
+	Added more ability to fake a real ACS system. 
+	
+	More console commands added for testing.
+	
+	Added Documentation.
+
+----------------------------------------------------
+3/26/2020 Version 3.8.0.0
+
+	Versioning now follows latest Vx release version.
+
+	Updated VxSdk.NET to 3.0.31
+	
+	Added username and password encryption to .xml files.  Base64 password is read in
+	and overwritten by new encryped values when the service starts.  Encrypted values are
+	identifiable, so anything not already encrypted will be treated as base64 unencrypted values.
+
+----------------------------------------------------
+3/5/2020 Version 0.0.1.0
+
+Updated to VxSdk.NET Nuget package 3.0.16.  
+Updated VideoXpert connection method for grace period.
+Removed AccessControlIPC project and added references to AccessControlIPC builds.
+
+----------------------------------------------------
+4/4/2018 Version 0.0.0.1
 
 The GenericAccessControlEventService is a generic codebase for starting a new Access Control integration with VideoXpert.
 It provides an easily modifiable UI based on Winforms, a service that may be launched from the command line
@@ -24,3 +55,18 @@ To create a new integration based upon this code:
     into the individual directories for some reason.  It would be nice to fix it to a common directory.
 8.  Modify IACSServer interface handlers found at end of VxEventHandler.cs.
 9.  Change installer product.wxs to add/change any files you want installed.
+
+
+Build Notes:
+------------
+
+Current version is set to 0.0.0.1.  Search for 0.0.0.1 in assembly information and installer upon release 
+and update version number manually.
+
+uses .NET version 4.61
+
+
+Future improvements (things we should consider):
+------------------------------------------------
+
+1.  Installer does not install microsoft prerequisites (VS 2015 C++ (x86) redist and .NET 4.61).
