@@ -16,6 +16,14 @@ namespace VxEvents
         public Image UserImage; 
     }
 
+    class FakeAlarm
+    {
+        public string Name;
+        public int Number;
+        public string AlarmId;
+        public string Status;
+    }
+
     class FakeDoor
     {
         public string Name;
@@ -29,11 +37,13 @@ namespace VxEvents
         public string EventType;
         public FakeUser User;
         public FakeDoor Door;
+        public FakeAlarm Alarm;
     }
     #endregion Fake Test Classes
 
     class ACSWrapper
     {
+        List<FakeAlarm> _alarms = new List<FakeAlarm>();
         List<FakeUser> _users = new List<FakeUser>();
         List<FakeDoor> _doors = new List<FakeDoor>();
 
@@ -62,6 +72,16 @@ namespace VxEvents
 
             FakeDoor door3 = new FakeDoor { Name = "Side Door", Number = 3, DoorId = "1E17DEF5-F038-4C6F-A89F-11743C20F81A", Status = "Locked" };
             _doors.Add(door3);
+
+            FakeAlarm alarm1 = new FakeAlarm { Name = "Front Lobby Alarm", Number = 1, AlarmId = "574450B0-7BE5-449E-AFC7-DF4384A6B259", Status = "Off" };
+            _alarms.Add(alarm1);
+
+            FakeAlarm alarm2 = new FakeAlarm { Name = "Back Door Alarm", Number = 2, AlarmId = "C7CC3AD2-D1B0-4914-A551-C323455B114E", Status = "On" };
+            _alarms.Add(alarm2);
+
+            FakeAlarm alarm3 = new FakeAlarm { Name = "Parking Lot Alarm", Number = 3, AlarmId = "78B837C8-D6C8-4D63-B0A1-C9632AF90769", Status = "Faulted" };
+            _alarms.Add(alarm3);
+
         }
 
         public string GetSysInfo()
@@ -93,6 +113,10 @@ namespace VxEvents
             eventList.Add("Access Granted");
             eventList.Add("Motion Detected");
             eventList.Add("Device Offline");
+            eventList.Add("Alarm On");
+            eventList.Add("Alarm Off");
+            eventList.Add("Alarm Faulted");
+            eventList.Add("Alarm Unknown");
             return eventList;
         }
 
@@ -146,6 +170,52 @@ namespace VxEvents
             }
             return controllerList;
         }
+
+        public List<FakeAlarm> GetAlarms()
+        {
+            List<FakeAlarm> alarmList = new List<FakeAlarm>();
+            foreach (var alarm in _alarms)
+            {
+                alarmList.Add(alarm);
+            }
+            return alarmList;
+        }
+
+        public string GetAlarmStatus(string alarmName)
+        {
+            string status = "Unknown";
+            var alarm = _alarms.FirstOrDefault(x => x.Name.ToUpper().Contains(alarmName.ToUpper()));
+            if (alarm != null)
+            {
+                status = alarm.Status;
+            }
+            return status;
+        }
+
+        public void SetAlarmStatus(string alarmName, string status)
+        {
+            var alarm = _alarms.FirstOrDefault(x => x.Name.ToUpper().Contains(alarmName.ToUpper()));
+            if (alarm != null)
+            {
+                if (status.ToUpper().Contains("OF"))
+                    alarm.Status = "Off";
+                else if (status.ToUpper().Contains("ON"))
+                    alarm.Status = "On";
+                else if (status.ToUpper().Contains("FA"))
+                    alarm.Status = "Faulted";
+                else alarm.Status = "Unknown";
+            }
+        }
+
+        public void SetAlarmStatusById(string alarmId, Pelco.AccessControlIPC.ACSTypes.ACSAlarmState status)
+        {
+            var alarm = _alarms.FirstOrDefault(x => x.AlarmId.ToUpper() == alarmId.ToUpper());
+            if (alarm != null)
+            {
+                alarm.Status = status.ToString();
+            }
+        }
+
 
         public List<FakeDoor> GetDoors()
         {
@@ -236,6 +306,24 @@ namespace VxEvents
             Trace.WriteLine("Fake ACS Door Event Created");
             Trace.WriteLine("    EventType: " + fakeEvent.EventType);
             Trace.WriteLine("    Door: " + fakeEvent.Door.Name);
+            return fakeEvent;
+        }
+
+        public FakeACSEvent CreateFakeAlarmEvent(string alarmId, string alarmEvent)
+        {
+            FakeACSEvent fakeEvent = new FakeACSEvent();
+            var eventTypes = GetEventList();
+            fakeEvent.EventType = eventTypes.FirstOrDefault(x => x.ToUpper().Contains(alarmEvent.ToUpper()));
+            fakeEvent.User = null;
+            fakeEvent.Alarm = _alarms.FirstOrDefault(x => x.AlarmId == alarmId);
+            // seems like the id is the name sometimes.
+            if (fakeEvent.Alarm == null)
+            {
+                fakeEvent.Alarm = _alarms.FirstOrDefault(x => x.Name == alarmId);
+            }
+            Trace.WriteLine("Fake ACS Alarm Event Created");
+            Trace.WriteLine("    EventType: " + fakeEvent.EventType);
+            Trace.WriteLine("    Alarm: " + fakeEvent.Alarm.Name);
             return fakeEvent;
         }
         #endregion Fake Test Methods

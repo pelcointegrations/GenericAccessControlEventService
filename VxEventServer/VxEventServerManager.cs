@@ -206,6 +206,17 @@ namespace VxEventServer
         }
 
         /// <summary>
+        /// List Alarms
+        /// </summary>
+        /// <param name="partialAlarmName">filter for alarm name</param>
+        /// <returns>String containing alarm information.</returns>
+        public string ListAlarms(string partialAlarmName)
+        {
+            return _vxEventHandler.ListAlarms(partialAlarmName);
+        }
+
+
+        /// <summary>
         /// List Doors
         /// </summary>
         /// <param name="partialDoorName">filter for door name</param>
@@ -213,6 +224,16 @@ namespace VxEventServer
         public string ListDoors(string partialDoorName)
         {
             return _vxEventHandler.ListDoors(partialDoorName);
+        }
+
+        /// <summary>
+        /// Set Alarm Status
+        /// </summary>
+        /// <param name="partialAlarmName">filter for alarm name</param>
+        /// <param name="status">alarm status</param>
+        public string SetAlarmStatus(string partialAlarmName, string status)
+        {
+            return _vxEventHandler.SetAlarmStatus(partialAlarmName, status);
         }
 
         /// <summary>

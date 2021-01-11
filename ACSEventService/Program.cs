@@ -173,6 +173,39 @@ namespace GenericAccessControlEventService
                             string response = VxEventServer.VxEventServerManager.Instance.ListUsers(param);
                             Console.WriteLine(response);
                         }
+                        else if (command.ToUpper().Contains("SETALARM"))
+                        {
+                            var commands = command.Split(' ');
+                            string param1 = string.Empty;
+                            string param2 = string.Empty;
+                            if (commands.Length > 1)
+                            {
+                                param1 = commands[1];
+                                param1 = param1.TrimStart();
+                            }
+                            if (commands.Length > 2)
+                            {
+                                param2 = commands[2];
+                                param2 = param2.TrimStart();
+                            }
+                            string response = VxEventServer.VxEventServerManager.Instance.SetAlarmStatus(param1, param2);
+                            Console.WriteLine(response);
+                        }
+                        else if (command.ToUpper().Contains("ALARM"))
+                        {
+                            var commands = command.Split(' ');
+                            string param = string.Empty;
+                            if (commands.Length > 1)
+                            {
+                                for (int i = 1; i < commands.Length; i++)
+                                {
+                                    param = param + " " + commands[i];
+                                }
+                                param = param.TrimStart();
+                            }
+                            string response = VxEventServer.VxEventServerManager.Instance.ListAlarms(param);
+                            Console.WriteLine(response);
+                        }
                         else if (command.ToUpper().Contains("SETDOOR"))
                         {
                             var commands = command.Split(' ');
@@ -238,6 +271,8 @@ namespace GenericAccessControlEventService
                                 "                  containing that substring.\n" +
                                 "                  (if blank, all events will be listed)\n");
             Console.WriteLine("Type \"USERS\" followed by a partial user name to filter on if desired\n");
+            Console.WriteLine("Type \"ALARMS\" followed by a partial alarm name to filter on if desired\n");
+            Console.WriteLine("Type \"SETALARM\" followed by a partial alarm name and status\n");
             Console.WriteLine("Type \"DOORS\" followed by a partial door name to filter on if desired\n");
             Console.WriteLine("Type \"SETDOOR\" followed by a partial door name and status\n");
             Console.WriteLine("Type \"FAKEACSEVENT\"\n");

@@ -948,6 +948,17 @@ private VxSdkNet.VXSystem GetVxSystem()
                                 KeyValuePair<string, string> kvpName = new KeyValuePair<string, string>("access_point_name", acsEvent.Door.Name);
                                 properties.Add(kvpName);
                             }
+                            else if (newEvent.SituationType.Contains("system/alarm_"))
+                            {
+                                // all these situations need properties "alarm_id", "alarm_index" and "access_name"
+                                KeyValuePair<string, string> kvpId = new KeyValuePair<string, string>("alarm_id", acsEvent.Alarm.AlarmId);
+                                properties.Add(kvpId);
+                                int index = 0;//acsEvent.Alarm.Number - 1;
+                                KeyValuePair<string, string> kvpIndex = new KeyValuePair<string, string>("alarm_index", Convert.ToString(index));
+                                properties.Add(kvpIndex);
+                                KeyValuePair<string, string> kvpName = new KeyValuePair<string, string>("alarm_name", acsEvent.Alarm.Name);
+                                properties.Add(kvpName);
+                            }
                             // all other properties go under _data as JSON object of kvp values
                             else
                             {
@@ -960,7 +971,15 @@ private VxSdkNet.VXSystem GetVxSystem()
                                 dataProperties.Add("user_id", acsEvent.User.UserId);
                                 dataProperties.Add("user_name", acsEvent.User.Name);
                             }
-                            List<string> cameraAssociations = GetCameraAssociations(acsEvent.EventType, acsEvent.Door.DoorId);
+                            List<string> cameraAssociations = new List<string>();
+                            if (acsEvent.Door != null)
+                            {
+                                cameraAssociations = GetCameraAssociations(acsEvent.EventType, acsEvent.Door.DoorId);
+                            }
+                            else if (acsEvent.Alarm != null)
+                            {
+                                cameraAssociations = GetCameraAssociations(acsEvent.EventType, acsEvent.Alarm.AlarmId);
+                            }
                             int i = 0;
                             foreach (var cameraId in cameraAssociations)
                             {
@@ -2175,6 +2194,35 @@ private VxSdkNet.VXSystem GetVxSystem()
         }
 
         /// <summary>
+        /// List Alarms
+        /// </summary>
+        /// <param name="partialAlarmName">filter for alarm name</param>
+        /// <returns>String containing alarm information.</returns>
+        public string ListAlarms(string partialAlarmName)
+        {
+            string response = string.Empty;
+            var alarms = _acsWrapper.GetAlarms();
+            if (alarms != null)
+            {
+                response = "Alarms found " + alarms.Count();
+                foreach (var alarm in alarms)
+                {
+                    if ((string.IsNullOrEmpty(partialAlarmName) || (alarm.Name.ToUpper().Contains(partialAlarmName.ToUpper()))))
+                    {
+                        response += "\r\n    " + alarm.Name + "    AlarmId: " + alarm.AlarmId + "     Status: " + alarm.Status;
+                        response += "\r\n";
+                    }
+                }
+            }
+            else
+            {
+                response = "No Alarms found ";
+            }
+
+            return response;
+        }
+
+        /// <summary>
         /// List Doors
         /// </summary>
         /// <param name="partialDoorName">filter for door name</param>
@@ -2204,7 +2252,42 @@ private VxSdkNet.VXSystem GetVxSystem()
         }
 
         /// <summary>
-        /// List Doors
+        /// SetAlarmStatus
+        /// </summary>
+        /// <param name="partialAlarmName">filter for alarm name</param>
+        /// <param name="status">alarm status</param>
+        /// <returns>String containing alarm information.</returns>
+        public string SetAlarmStatus(string partialAlarmName, string status)
+        {
+            string response = string.Empty;
+            List<FakeAlarm> alarms = _acsWrapper.GetAlarms();
+            if (alarms != null)
+            {
+                FakeAlarm alarm = alarms.FirstOrDefault(x => x.Name.ToUpper().Contains(partialAlarmName.ToUpper()));
+                if (alarm != null)
+                {
+                    _acsWrapper.SetAlarmStatus(alarm.Name, status);
+                    response = "Alarm " + alarm + " Status: " + status;
+                    // status will be on, off faulted - change to match fake event
+                    string alarmStatus = "alarm " + status;
+                    FakeACSEvent fakeEvent = _acsWrapper.CreateFakeAlarmEvent(alarm.AlarmId, alarmStatus);
+                    _fakeACSEvents.Enqueue(fakeEvent);
+                }
+                else
+                {
+                    response = "Alarm " + partialAlarmName + " Not Found";
+                }
+            }
+            else
+            {
+                response = "No Alarms found ";
+            }
+
+            return response;
+        }
+
+        /// <summary>
+        /// SetDoorStatus
         /// </summary>
         /// <param name="partialDoorName">filter for door name</param>
         /// <param name="status">door status</param>
@@ -2267,7 +2350,20 @@ private VxSdkNet.VXSystem GetVxSystem()
                 throw new System.IO.IOException();    
 
             Trace.WriteLineIf(_debugLevel > 1, "IACS GetAlarmList called");
-            throw new NotImplementedException();
+            List<ACSAlarm> alarmPointList = new List<ACSAlarm>();
+            var alarmList = _acsWrapper.GetAlarms();
+            foreach (var alarm in alarmList)
+            {
+                ACSAlarm alarmPoint = new ACSAlarm();
+                alarmPoint.Id = alarm.AlarmId;
+                alarmPoint.Name = alarm.Name;
+                alarmPoint.State = ConvertToAlarmStatus(alarm.Status);
+                alarmPoint.Type = AlarmType.Standard;
+                alarmPointList.Add(alarmPoint);
+            }
+            return alarmPointList;
+
+
         }
 
         public ACSAlarm GetAlarm(string Id)
@@ -2276,7 +2372,17 @@ private VxSdkNet.VXSystem GetVxSystem()
                 throw new System.IO.IOException();    
 
             Trace.WriteLineIf(_debugLevel > 1, "IACS GetAlarm " + Id);
-            throw new NotImplementedException();
+            var alarmList = _acsWrapper.GetAlarms();
+            var ap = alarmList.FirstOrDefault(x => x.AlarmId == Id);
+            ACSAlarm alarmPoint = new ACSAlarm();
+            if (ap != null)
+            {
+                alarmPoint.Id = ap.AlarmId;
+                alarmPoint.Name = ap.Name;
+                alarmPoint.State = ConvertToAlarmStatus(ap.Status);
+                alarmPoint.Type = AlarmType.Standard;
+            }
+            return alarmPoint;
         }
 
         public bool AckAlarm(string alarmId)
@@ -2285,7 +2391,7 @@ private VxSdkNet.VXSystem GetVxSystem()
                 throw new System.IO.IOException();    
             // this call is not needed.  Acknowledgement is read from event in OnSystemEvent
             Trace.WriteLineIf(_debugLevel > 1, "IACS AckAlarm " + alarmId);
-            throw new NotImplementedException();
+            return true;
         }
 
         public bool SetAlarmState(string alarmId, ACSAlarmState state)
@@ -2294,7 +2400,8 @@ private VxSdkNet.VXSystem GetVxSystem()
                 throw new System.IO.IOException();    
 
             Trace.WriteLineIf(_debugLevel > 1, "IACS SetAlarmState " + state.ToString());
-            throw new NotImplementedException();
+            _acsWrapper.SetAlarmStatusById(alarmId, state);
+            return true;
         }
 
         public List<ACSUser> GetUserList()
@@ -2377,6 +2484,18 @@ private VxSdkNet.VXSystem GetVxSystem()
                 accessPointList.Add(accessPoint);
             }
             return accessPointList;
+        }
+
+        private ACSAlarmState ConvertToAlarmStatus(string status)
+        {
+            ACSAlarmState alarmStatus = ACSAlarmState.UnKnown;
+            if (status.ToUpper().Contains("OF"))
+                alarmStatus = ACSAlarmState.Off;
+            else if (status.ToUpper().Contains("ON"))
+                alarmStatus = ACSAlarmState.On;
+            else if (status.ToUpper().Contains("FA"))
+                alarmStatus = ACSAlarmState.Faulted;
+            return alarmStatus;
         }
 
         private ACSAccessPointStatus ConvertToACSStatus(string status)

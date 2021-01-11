@@ -1,4 +1,19 @@
 ----------------------------------------------------
+10/26/2020 Version 3.10.3.0
+
+	More alarm test functionality.  Added injection of alarms through setalarm console command.
+
+----------------------------------------------------
+10/12/2020 Version 3.10.2.0
+
+	Implemented more alarm test functionality.
+	
+----------------------------------------------------
+10/12/2020 Version 3.10.1.0
+
+	Added in some fake capability for alarms for test purposes.
+
+----------------------------------------------------
 9/8/2020 Version 3.10.0.0
 
 	Updated to VxSdk.Net 3.0.33

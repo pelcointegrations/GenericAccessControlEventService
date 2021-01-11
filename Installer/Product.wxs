@@ -5,7 +5,7 @@
 <?define ProductIcon = "$(var.SolutionDir)Installer\Resources\VideoXpert_Ops.ico"?>
 <?define WixUIDialogBmp = "$(var.SolutionDir)Installer\Resources\vx-installer-intro-bg.jpg"?>
 <?define WixUIBannerBmp = "$(var.SolutionDir)Installer\Resources\vx-installer-interior-banner-bg.jpg"?>
-<?define Version = "3.10.0.0"?>
+<?define Version = "3.10.3.0"?>
 <?define App = "$(var.GenericAccessControlEventService.TargetDir)"?>
 <?define AdminApp = "$(var.VX_ACS_Administration.TargetDir)"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">

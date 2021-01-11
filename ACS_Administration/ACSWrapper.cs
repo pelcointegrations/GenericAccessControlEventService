@@ -92,6 +92,10 @@ namespace VxEvents
             eventList.Add("Access Granted");
             eventList.Add("Motion Detected");
             eventList.Add("Device Offline");
+            eventList.Add("Alarm On");
+            eventList.Add("Alarm Off");
+            eventList.Add("Alarm Faulted");
+            eventList.Add("Alarm Unknown");
             return eventList;
         }
 
